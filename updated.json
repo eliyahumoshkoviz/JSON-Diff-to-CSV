@@ -1,0 +1,15 @@
+ [
+        {
+            "isAllList": true,
+            "id": "2cfd1f1d-00b1-44b1-92a5-32e37c161013",
+            "listName": "test1 list",
+            "favoriteItems": [
+                {
+                    "id": "12",
+                    "materialNumber": 545758,
+                    "quantity": 1,
+                    "unit": "KAR"
+                }
+            ]
+        }
+    ]
