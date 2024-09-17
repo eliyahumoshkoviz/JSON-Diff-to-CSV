@@ -1,20 +1,17 @@
-const fs = require("fs");
+import * as fs from 'fs';
 
-function createCSV(filePath1, filePath2) {
+export function createCSV(filePath1, filePath2) {
     const obj1 = JSON.parse(fs.readFileSync(filePath1, "utf8"));
     const obj2 = JSON.parse(fs.readFileSync(filePath2, "utf8"));
     const csvHeader = "Original,Updated\n";
     const uniqueKeys = getUniqueKeysFromObjects(obj1, obj2);  
-    // Determine the maximum length between the two arrays
     const maxLength = Math.max(uniqueKeys[0].length, uniqueKeys[1].length);
-    // Create CSV rows independently
     const csvRows = [];
     for (let i = 0; i < maxLength; i++) {
-      const key1 = uniqueKeys[0][i] || ""; // Get the key or an empty string if out of bounds
-      const key2 = uniqueKeys[1][i] || ""; // Get the key or an empty string if out of bounds
+      const key1 = uniqueKeys[0][i] || "";
+      const key2 = uniqueKeys[1][i] || "";
       csvRows.push(`${key1},${key2}`);
     }
-    // Join rows to form the final CSV string
     return csvHeader + csvRows.join("\n") + "\n";
   }
 
@@ -31,7 +28,6 @@ function getKeysFromObject(obj, prefix = "") {
   for (const k in obj) {
     if (obj.hasOwnProperty(k)) {
       const prefixedKey = prefix ? `${prefix}.${k}` : k;
-
       if (Array.isArray(obj[k])) {
         if (obj[k].length > 0 && typeof obj[k][0] === "object") {
           obj[k].forEach((item, index) => {
@@ -51,5 +47,3 @@ function getKeysFromObject(obj, prefix = "") {
   }
   return keys;
 }
-
-module.exports = { createCSV };
