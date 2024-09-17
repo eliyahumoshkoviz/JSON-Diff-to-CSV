@@ -13,4 +13,4 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/json-csv-diff-tool.git
+   git clone https://github.com/eliyahumoshkoviz/JSON-Diff-to-CSV.git
